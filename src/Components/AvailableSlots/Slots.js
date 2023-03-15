@@ -19,12 +19,37 @@ function Slots(props) {
   let footer = <p>Please pick a day.</p>;
   if (selected) {
     footer = <p>You picked {format(selected, "PP EEEE")}</p>;
-    console.log(format(selected, "EEEE"));
+    console.log('Date fomrat',format(selected, "PP"));
+    console.log('Selected',selected);
   }
 
   const AddSlot = location.state;
 
   const handleSlots = (id) => {
+    const date = new Date(format(selected, "PP"));
+
+    // const AvailableSlots=[
+    //   {
+    //       id:1,
+    //       startTime:"09:00",
+    //       endTime:"10:00"
+    //   },
+    //   {
+    //       id:2,
+    //       startTime:"10:00",
+    //       endTime:"11:00"
+    //   },
+    // ]
+    AvailableSlots.forEach(slot => {
+      const startDate = new Date(`${date.toDateString()} ${slot.startTime}`);
+      const endDate = new Date(`${date.toDateString()} ${slot.endTime}`);
+      slot.startTime = startDate.toISOString();
+      slot.endTime = endDate.toISOString();
+    });
+
+console.log('Available Slots',AvailableSlots);
+
+
     const SlotfilterData = AvailableSlots.filter((info) => {
       return info.id === id;
     });

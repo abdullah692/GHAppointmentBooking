@@ -1,72 +1,72 @@
 export const AvailableSlots=[
     {
         id:1,
-        startTime:"09:00 AM",
-        endTime:"10:00 AM"
+        startTime:"09:00",
+        endTime:"10:00"
     },
     {
         id:2,
-        startTime:"10:00 AM",
-        endTime:"11:00 AM"
+        startTime:"10:00",
+        endTime:"11:00"
     },
     {
         id:3,
-        startTime:"11:00 AM",
-        endTime:"12:00 PM"
+        startTime:"11:00",
+        endTime:"12:00"
     },
     {
         id:4,
-        startTime:"12:00 PM",
-        endTime:"01:00 PM"
+        startTime:"12:00",
+        endTime:"01:00"
     },
     {
         id:5,
-        startTime:"01:00 PM",
-        endTime:"02:00 PM"
+        startTime:"01:00",
+        endTime:"02:00"
     },
     {
         id:6,
-        startTime:"02:00 PM",
-        endTime:"03:00 PM"
+        startTime:"02:00",
+        endTime:"03:00"
     },
     {
         id:7,
-        startTime:"03:00 PM",
-        endTime:"04:00 PM"
+        startTime:"03:00",
+        endTime:"04:00"
     },
     {
         id:8,
-        startTime:"04:00 PM",
-        endTime:"05:00 PM"
+        startTime:"04:00",
+        endTime:"05:00"
     },
     {
         id:9,
-        startTime:"05:00 PM",
-        endTime:"06:00 PM"
+        startTime:"05:00",
+        endTime:"06:00"
     },
     {
         id:10,
-        startTime:"06:00 PM",
-        endTime:"07:00 PM"
+        startTime:"06:00",
+        endTime:"07:00"
     },
     {
         id:11,
-        startTime:"07:00 PM",
-        endTime:"08:00 PM"
+        startTime:"07:00",
+        endTime:"08:00"
     },
     {
         id:12,
-        startTime:"08:00 PM",
-        endTime:"09:00 PM"
+        startTime:"08:00",
+        endTime:"09:00"
     },
     {
         id:13,
-        startTime:"09:00 PM",
-        endTime:"10:00 PM"
+        startTime:"09:00",
+        endTime:"10:00"
     },
     {
         id:14,
-        startTime:"10:00 PM",
-        endTime:"11:00 PM"
+        startTime:"10:00",
+        endTime:"11:00"
     },
 ]
