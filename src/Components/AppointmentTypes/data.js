@@ -42,3 +42,11 @@ export const appTypes=
         appointment:"Dentures"
     }
 ]
+
+export const Insurance=
+[
+    {
+        id:"1",
+        insurance:"No Insurance"
+    }
+]

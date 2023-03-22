@@ -13,7 +13,7 @@ function AppointmentTypes(filterData) {
 
   const handleAppTypes = async () => {
     const Apidata = await axios
-      .get("http://3.138.89.18/api/booking/appointmenttypes/1")
+      .get("https://api.genesishealth.ai/api/booking/appointmenttypes/1")
       .then((res) => {
         // console.log('Api response',res.data.data);
         setAppTypes(res.data.data);
@@ -27,14 +27,14 @@ function AppointmentTypes(filterData) {
     //   appointment.appointmentType = value;
     // });
 
-    // console.log("Appointment", AppointmentVal);
+    console.log("Appointment", AppointmentVal);
     const filterData = appTypes.filter((info) => {
       return info.id === id;
     });
     // console.log("Filter data", filterData);
     arr.push(AppointmentVal,filterData)
     console.log("Appointment", arr);
-    navigate("/slots", { state: {arr} });
+    navigate("/insuranceTypes", { state: {arr} });
   };
 
   useEffect(() => {
@@ -54,7 +54,7 @@ function AppointmentTypes(filterData) {
                 return (
                   <>
                     <div
-                      className="grid grid-cols-2 rounded-[10px] drop-shadow-lg p-4 bg-[#f2f3f4] hover:bg-slate-100 cursor-pointer"
+                      className="grid grid-cols-1 rounded-[10px] drop-shadow-lg p-4 bg-[#f2f3f4] hover:bg-slate-100 cursor-pointer"
                       id={item.id}
                       key={item.id}
                       // onClick={handleClick.bind(this, item.type)}

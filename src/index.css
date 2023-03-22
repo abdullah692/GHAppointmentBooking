@@ -19,3 +19,9 @@ code {
 .react-datepicker-wrapper{
   width: 400px !important;
 }
+
+/* @media (max-width: 325px) {
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+} */

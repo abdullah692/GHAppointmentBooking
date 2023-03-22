@@ -3,16 +3,18 @@ import { DoctorsInfo } from "./data";
 import { useNavigate} from 'react-router-dom';
 import axios from "axios";
 import dr1 from "..//../assets/images/dr1.jpg"
-
+import { useParams } from "react-router-dom";
 
 function DoctorsList(props) {
     
   const [drList, setDrList] = useState([]);
   const navigate = useNavigate();
-  
+  const dp_id=1;
+  const {id}=useParams();
+  console.log('Id is',id);
 
   const handleDrList=async()=>{
-    const Apidata=await axios.get("http://3.138.89.18/api/booking/dentist/1")
+    const Apidata=await axios.get(`https://api.genesishealth.ai/api/booking/dentist/${id}`)
     .then((res)=>{
       // console.log('Api response',res.data.data);
       setDrList(res.data.data)
@@ -36,9 +38,9 @@ useEffect(()=>{
   return (
     <div>
       <div className="max-w-[130vw] ">
-        <div className="grid grid-cols-1  py-6 px-16">
+        <div className="grid grid-cols-1  py-6 px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16">
           <div className="  row-span-1 rounded-[10px] ">
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
               {drList.map((item) => {
                 return (
                   <>
@@ -48,15 +50,15 @@ useEffect(()=>{
                       key={item.id}
                       id={item.id}
                     >
-                      <div>
+                      <div className="">
                         <img
                           src={dr1}
                           alt="doctors"
-                          className="w-[150px] h-[100px] rounded-[20px]"
+                          className="w-[100px] xl:w-[120px] h-[100px] rounded-[20px]"
                         />
                       </div>
                       <div className="ml-2 mt-5">
-                        <p className="text-[20px] font-semibold">{item.name}</p>
+                        <p className="text-[15px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[25px]    font-semibold">{item.name}</p>
                         <p className="text-[14px]">{item.email}</p>
                       </div>
                     </div>
