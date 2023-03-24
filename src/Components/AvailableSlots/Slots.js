@@ -9,6 +9,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import { Button, Modal } from "antd";
+import dayjs from "dayjs";
 
 function Slots(props) {
   const [selected, setSelected] = useState(new Date());
@@ -18,6 +19,8 @@ function Slots(props) {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [data, setData] = useState([]);
+  // const [slotsData, setSlotsData] = useState([...AvailableSlots]);
+  
   const arr = [];
   var startTimeChange;
   var endTimeChange;
@@ -41,19 +44,19 @@ function Slots(props) {
 
   const handleSlots = (id, startTime, endTime) => {
     const date = new Date(format(selected, "PP"));
-    console.log("Date is", date);
-    console.log("StartTime", startTime);
-    console.log("EndTime", endTime);
+    // console.log("Date is", date);
+    // console.log("StartTime", startTime);
+    // console.log("EndTime", endTime);
     const startDate = new Date(`${date?.toDateString()} ${startTime}`);
-    console.log("startDate", startDate);
+    // console.log("startDate", startDate);
     const endDate = new Date(`${date?.toDateString()} ${endTime}`);
-    console.log("endDate", endDate);
+    // console.log("endDate", endDate);
     startTime = startDate?.toISOString();
     endTime = endDate?.toISOString();
     setStartTime(startTime);
     setEndTime(endTime);
-    console.log("start Time Change", startTime);
-    console.log("end Time Change", endTime);
+    // console.log("start Time Change", startTime);
+    // console.log("end Time Change", endTime);
     // const AvailableSlots=[
     //   {
     //       id:1,
@@ -68,14 +71,46 @@ function Slots(props) {
     // ]
     if (!d_idManual) {
       AvailableSlots.forEach((slot) => {
-        const startDate = new Date(
-          `${date?.toDateString()} ${slot?.startTime}`
-        );
-        console.log("startDate", startDate);
-        const endDate = new Date(`${date?.toDateString()} ${slot?.endTime}`);
-        console.log("endDate", endDate);
-        slot.startTime = startDate?.toISOString();
-        slot.endTime = endDate?.toISOString();
+        const dateVal = dayjs(date).format("YYYY-MM-DD");
+        console.log("DateVal", dateVal);
+        const d1 = new Date(dateVal);
+        const d2 = new Date(dateVal);
+        console.log('d1',d1);
+        d1.setHours(slot.startTime.slice(0,2))
+        d1.setMinutes(0)
+        d1.setSeconds(0);
+        d1.setMilliseconds(0);
+        
+        d2.setHours(slot.endTime.slice(0,2))
+        d2.setMinutes(0)
+        d2.setSeconds(0);
+        d2.setMilliseconds(0);
+        
+        console.log(d1.toString(), "handleTime");
+        // return d1.toISOString();
+
+        // const startDate = new Date(
+        //   `${date?.toDateString()} ${slot?.startTime}`
+        // );
+        // // startDate.setUTCHours(9);
+        // console.log("startDate", startDate);
+        // const endDate = new Date(`${date?.toDateString()} ${slot?.endTime}`);
+        // console.log("endDate", endDate);
+        // //         endDate.setUTCHours(5);
+
+        // const timezoneOffset = new Date().getTimezoneOffset() * 60000; // in milliseconds
+
+        // const start =
+        //   new Date(`${dateVal} ${slot.startTime}`).getTime()+timezoneOffset;
+        // const end =
+        //   new Date(`${dateVal} ${slot.endTime}`).getTime()+timezoneOffset;
+
+        // const utcStart = new Date(start).toISOString();
+        // const utcEnd = new Date(end).toISOString();
+
+        // console.log(`${utcStart} - ${utcEnd}`, "asasasass");
+        slot.startTime = new Date(d1);
+        slot.endTime = new Date(d2);
       });
     }
 
@@ -156,6 +191,14 @@ function Slots(props) {
       });
   };
 
+  // useEffect(() => {
+  //   if (location.pathname === '/slots') {
+  //     // Do something when pathname changes to /slots
+  //     setSlotsData([...slotsData]);
+  //     console.log('Pathname changed to /slots');
+  //   }
+  // }, [location.pathname]);
+
   useEffect(() => {
     const sel = format(selected, "EEEE").toLowerCase();
     const selectedDaySlot = availableSlots.filter(
@@ -170,6 +213,7 @@ function Slots(props) {
   }, [selected]);
 
   console.log("Add Slot", AddSlot);
+  
   useEffect(() => {
     // handleSlots();
     handleTimeSlots();

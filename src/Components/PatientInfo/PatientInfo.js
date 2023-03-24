@@ -16,7 +16,8 @@ function PatientInfo(props) {
   const InsId = AddSlot.AddSlot.arr[2][0].id;
   const startTime = AddSlot.AddSlot.arr[3][0].startTime;
   const endTime = AddSlot.AddSlot.arr[3][0].endTime;
-  // console.log('avId',AddSlot.AddSlot.arr[0][0].id);
+  console.log('Start Time',startTime);
+  console.log('End Time',endTime);
   // console.log('atId',AddSlot.AddSlot.arr[1][0].id);
   // console.log('Time Slots',AddSlot.AddSlot.arr[2][0]);
   const [pateintInfo, setPatientInfo] = useState({
@@ -57,20 +58,20 @@ function PatientInfo(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("PatientInfo", pateintInfo);
-    const ApiCall = await axios
-      .post("https://api.genesishealth.ai/api/booking/appointment", pateintInfo)
-      .then((res) => {
-        console.log(res.data);
-        if (res.data) {
-          navigate("/appointmentBook", { state: { AddSlot } });
-        } else {
-          alert("Something wrong in filling up the form");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    //
+    // const ApiCall = await axios
+    //   .post("https://api.genesishealth.ai/api/booking/appointment", pateintInfo)
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     if (res.data) {
+    //       navigate("/appointmentBook", { state: { AddSlot } });
+    //     } else {
+    //       alert("Something wrong in filling up the form");
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+    
   };
   //   const onChange = (date, dateString) => {
   //     console.log(date, dateString);
